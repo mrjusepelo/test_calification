@@ -1,0 +1,33 @@
+<div class="container">
+
+<h1>Lista de Profesores</h1>
+
+<%= link_to "HOME", root_path %>
+<br>
+<%= link_to "Crear", new_teacher_path %>
+
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @teachers.each do |teacher| %>
+    <tr>
+      <th scope="row"><%= teacher.id %></th>
+      <td><%= teacher.name %></td>
+      <td>
+        <%= link_to "Ver asignaturas", asignatures_teacher_path(teacher) %>
+        <br>
+        <%= link_to "Eliminar", teacher_path(teacher), method: :delete, data: {confirm: "¿Estas seguro?"} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

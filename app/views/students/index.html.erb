@@ -1,0 +1,43 @@
+<div class="container">
+
+<h1>Lista de Estudiantes</h1>
+
+<%= link_to "HOME", root_path %>
+<br>
+<%= link_to "Crear", new_student_path %>
+
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Asignaturas</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+    <tr>
+      <th scope="row"><%= student.id %></th>
+      <td><%= student.name %></td>
+      <td>
+        <% student.asignature_students.each do |as| %>
+          <p>
+            <%= as.asignature.name %>
+            <span> | </span>
+            Calificación: <%= as.value %>
+            <span> | </span>
+            <%= link_to "Calificar", new_calification_student_path(as.id) %>
+          </p>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Eliminar", student_path(student), method: :delete, data: {confirm: "¿Estas seguro?"} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

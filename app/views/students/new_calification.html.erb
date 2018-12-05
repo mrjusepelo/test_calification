@@ -1,0 +1,18 @@
+<div class="container">
+  <%= form_for(@asignature_student, as: :student, url: create_calification_student_path(@asignature_student), method: :post) do |f| %>
+  <% if @asignature_student.errors.any? %>
+    <% @asignature_student.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end  %>
+  <% end  %>
+    <div class="form-group">
+      <%= f.label :value %>
+      <%= f.text_field :value,  class: "form-control", id: "value", placeholder: "Enter Nota" %>
+    </div>
+
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+    <br>
+
+    <%= link_to "Regresar", students_asignature_path(@asignature_student.asignature_id), class: "btn btn-default " %>
+  <% end %>
+</div>

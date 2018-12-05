@@ -1,0 +1,43 @@
+<div class="container">
+
+<h1>Lista de asignaturas</h1>
+
+<%= link_to "HOME", root_path %>
+<br>
+<%= link_to "Crear", new_asignature_path %>
+
+<br>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Docente</th>
+      <th scope="col">Cursos</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @asignatures.each do |asignature| %>
+    <tr>
+      <th scope="row"><%= asignature.id %></th>
+      <td><%= asignature.name %></td>
+      <td><%= asignature.teacher_id.blank? ? "no asignado" : asignature.teacher.name %></td>
+      <td>
+        <% asignature.courses.each do |course| %>
+        <p>
+          <%= course.name %>
+        </p>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to "Ver estudiantes", students_asignature_path(asignature) %>
+        <br>
+        <%= link_to "Eliminar", asignature_path(asignature), method: :delete, data: {confirm: "¿Estas seguro?"} %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <%= form_for(@teacher) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,  class: "form-control", id: "name", placeholder: "Enter Name" %>
+    </div>
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+    <br>
+    <%= link_to "Regresar", teachers_path, class: "btn btn-default " %>
+  <% end %>
+</div>

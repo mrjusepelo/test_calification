@@ -1,0 +1,17 @@
+<div class="container">
+  <%= form_for(@course) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,  class: "form-control", id: "name", placeholder: "Enter Name" %>
+    </div>
+
+    <div class="col-md-12 margin-bottom15">
+      <label class="label-form-profile">Docente</label></label>
+      <%= f.select :teacher_id, Teacher.all.collect {|a| [a.name, a.id]}, {}, class: "form-control" %>
+    </div>
+
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+    <br>
+    <%= link_to "Regresar", courses_path, class: "btn btn-default " %>
+  <% end %>
+</div>

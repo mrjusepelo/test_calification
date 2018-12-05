@@ -1,0 +1,22 @@
+<div class="container">
+  <%= form_for(@student) do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name,  class: "form-control", id: "name", placeholder: "Enter Name" %>
+    </div>
+
+    <div class="col-md-12 form-group">
+      <label class="label-form-profile">Matricular en: </label>
+      <%=  f.collection_check_boxes :asignature_ids, Asignature.all, :id, :name do |b|  %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+      <% end %>
+    </div>
+
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+    <br>
+    <%= link_to "Regresar", students_path, class: "btn btn-default " %>
+  <% end %>
+</div>
